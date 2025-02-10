@@ -1,0 +1,59 @@
+@use "sass:math";
+
+@function calcRandom($size){
+    @return calc(math.floor(math.random()* $size)) 
+}
+
+@function generateShadows($n,$size){
+    $shadow : ();
+    @for $i from 1 through $n{
+        //$shadow : "#{$shadow} #{calcRandom(100vw)} #{calcRandom(100vh)} 0px 0px white,"
+        $shadow: append($shadow, unquote("#{calcRandom(100vw)} #{calcRandom(100vh)} 0px 0px white"))
+    } 
+
+    @return join($shadow, (), comma)
+}
+
+body{
+    background: black;
+}
+
+$size : 1;
+$duration: 200;
+$number: 200;
+
+@for $i from 1 through 5{
+    #lay#{$i}{
+        position: fixed;
+        inset: 10px;
+        width: #{$size}px;
+        height:#{$size}px;
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: generateShadows($number,$size);
+        animation: moveUp #{$duration}s linear infinite;
+        &::after{
+            content:"";
+            position: inherit;
+            left: 0px;
+            top: 100vh;
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+            background-color: inherit;
+            box-shadow: inherit;
+        }
+    }
+    $size: $size + 0.8;
+    $number: $number - 50;
+    $duration: $duration - 40
+}
+
+
+@keyframes moveUp{
+    to{
+        transform: translateY(-100vh);
+    }
+}
+
+//@debug generateShadows(13)
