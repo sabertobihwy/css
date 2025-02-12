@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    @property --direct {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    @keyframes rotate {
+        to {
+            --direct: 360deg;
+        }
+    }
+
+
+    #frame {
+        --size: 400px;
+        position: relative;
+        border-radius: max(6px, 6%);
+        width: var(--size);
+        height: calc(var(--size) * 1.5);
+        background-image:
+            linear-gradient(var(--direct), #a3d1f7, #0646a5, #4e00c2);
+        animation: rotate 3s linear infinite;
+
+        &::after {
+            content: '';
+            position: absolute;
+            border-radius: inherit;
+            inset: 20px;
+            background-color: black;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            /* 扩大发光区域 */
+            border-radius: inherit;
+            background: inherit;
+            filter: blur(50px);
+            /* 模糊让光晕扩散 */
+            z-index: -1;
+            /* 确保光晕在底层 */
+            opacity: 0.8;
+        }
+
+    }
+</style>
+
+<body>
+    <div id="frame">
+    </div>
+</body>
+
+</html>
