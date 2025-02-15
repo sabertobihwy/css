@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html[data-theme='dark'] {
+        --color1: #0D1B2A;
+        --color2: #3C1053;
+        --btnColor1: #3C1053;
+        --btnColor2: #0D1B2A;
+        --btnColor3: #0D1B2A;
+        --btnColor4: #172A45;
+        --fontColor: #fff;
+    }
+
+    :root {
+        --color1: #E3F2FD;
+        --color2: #FCE4EC;
+        --btnColor1: #FFDEE9;
+        --btnColor2: #B5FFFC;
+        --btnColor3: #FFCBD3;
+        --btnColor4: #A8F3FF;
+        --fontColor: black;
+    }
+
+    body {
+        background: linear-gradient(135deg, var(--color1), var(--color2));
+    }
+
+    button {
+        background: linear-gradient(50deg, var(--btnColor1), var(--btnColor2));
+        color: var(--fontColor);
+        border: 1px solid gray;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+        background: linear-gradient(50deg, var(--btnColor3), var(--btnColor4));
+        transform: scale(1.05);
+    }
+</style>
+
+<body>
+    <button>Switch</button>
+</body>
+<script>
+    const html = document.querySelector('html')
+    document.querySelector('button')
+        .onclick = () => {
+            const theme = html.getAttribute('data-theme')
+            html.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark')
+        }
+</script>
+
+</html>
