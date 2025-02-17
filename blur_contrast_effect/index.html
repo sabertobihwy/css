@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html {
+        filter: contrast(18.5);
+    }
+
+    body {
+        background-color: black;
+
+    }
+
+    h1 {
+        color: white;
+        font-size: 10em;
+        filter: blur(5px);
+    }
+
+    #circle {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        filter: blur(3px)
+    }
+
+    #circle::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 30% 40% 40% 36%;
+        background: #BC8F8F;
+        animation: rotate 2s linear infinite,
+            hueChange 4s linear infinite;
+
+    }
+
+    #bubbles {
+        position: absolute;
+        width: 100px;
+        height: 150px;
+        /* background-color: #BC8F8F; */
+        left: 0;
+        top: 70px;
+    }
+
+    #bubbles .bubble {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #BC8F8F;
+        border-radius: 50%;
+    }
+
+    #bubbles .bubble1 {
+        left: 0%;
+        animation: moveUp 2s linear infinite, hueChange 4s linear infinite;
+    }
+
+
+    #bubbles .bubble2 {
+        left: 50%;
+        animation: moveUp 3s linear infinite, hueChange 4s linear infinite;
+    }
+
+    #bubbles .bubble3 {
+        left: 70%;
+        animation: moveUp 6s linear infinite, hueChange 4s linear infinite;
+    }
+
+    #bubbles .bubble4 {
+        left: 20%;
+        animation: moveUp 4s linear infinite, hueChange 4s linear infinite;
+    }
+
+    #bubbles .bubble5 {
+        left: 60%;
+        animation: moveUp 2s linear infinite, hueChange 4s linear infinite;
+    }
+
+
+    /* 
+    #buttles .bubble2 {
+        left: 60%;
+    } */
+
+    @keyframes moveUp {
+        from {
+            top: 100%;
+        }
+
+        to {
+            top: 0%;
+        }
+    }
+
+    @keyframes hueChange {
+        0% {
+            filter: hue-rotate(0deg);
+        }
+
+        50% {
+            filter: hue-rotate(180deg);
+        }
+
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+    <h1>666</h1>
+    <div id="circle">
+        <div id="bubbles">
+            <div class="bubble bubble1"></div>
+            <div class="bubble bubble2"></div>
+            <div class="bubble bubble3"></div>
+            <div class="bubble bubble4"></div>
+            <div class="bubble bubble5"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
