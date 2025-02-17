@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container {
+        width: 500px;
+        height: 250px;
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        /* x轴的滚动必须滚动到一边 */
+    }
+
+    .img {
+        width: 100%;
+        height: 100%;
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+        /* 以center为对齐*/
+        scroll-snap-stop: always;
+        /* 不可能一次滑两页*/
+    }
+
+    #container::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id='container'>
+        <img class='img' style="background: orange;" />
+        <img class='img' style="background: pink;" />
+        <img class='img' style="background: aquamarine;" />
+    </div>
+</body>
+
+</html>

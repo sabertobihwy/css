@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #wave {
+        position: absolute;
+        left: 50%;
+        top: 120px;
+        width: 100px;
+        height: 100px;
+        border-radius: 43px;
+        background: rgb(105, 196, 248);
+        animation: wave 5s linear infinite;
+    }
+
+    #circle {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 70px;
+        height: 70px;
+        transform: translate(-50%, -50%);
+        background-color: transparent;
+        border-radius: 50%;
+        border: 2px solid black;
+        overflow: hidden;
+
+    }
+
+    @keyframes wave {
+        0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        50% {
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        100% {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+
+    <div id="circle">
+        <div id="wave"></div>
+
+    </div>
+</body>
+<script>
+    const wave = document.querySelector('#wave')
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowUp") {
+            console.log(getComputedStyle(wave).top)
+            wave.style.top = parseInt(getComputedStyle(wave).top) - 10 + 'px'
+            console.log(wave.style.top)
+        }
+        if (event.key === "ArrowDown") {
+            console.log(getComputedStyle(wave).top)
+            wave.style.top = parseInt(getComputedStyle(wave).top) + 10 + 'px'
+            console.log(wave.style.top)
+        }
+    });
+</script>
+
+</html>
