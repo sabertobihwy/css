@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    html {
+        --inset: 10px;
+        --height: 50px;
+    }
+
+    #ball {
+        position: absolute;
+        inset: var(--inset);
+        width: var(--height);
+        height: var(--height);
+        border-radius: 50%;
+        background-color: red;
+        animation: move linear 1s paused;
+        animation-delay: -0.5s;
+        animation-fill-mode: forwards;
+        /* stay at the final state  */
+    }
+
+    @keyframes move {
+        100% {
+            transform: translateX(100px);
+        }
+    }
+
+    #range {
+        position: absolute;
+        top: calc(var(--inset) + var(--height))
+    }
+</style>
+
+<body>
+    <div id="ball"></div>
+    <input id="range" type="range" min="0" max="1" step="0.001" value="0" />
+</body>
+<script>
+    const range = document.querySelector('#range')
+    const ball = document.querySelector('#ball')
+    ball.style.animationDelay = `-0s`
+    range.addEventListener('change', (e) => {
+        const val = e.target.value
+        ball.style.animationDelay = `-${val}s`
+    })
+</script>
+
+</html>
