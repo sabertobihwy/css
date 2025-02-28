@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container {
+        position: relative;
+        margin: 10px;
+        border: 1px solid black;
+        height: 300px;
+    }
+
+    #text {
+        margin: 10px;
+        font-size: 1em;
+    }
+
+    #blinking-cursor {
+        position: absolute;
+        inset: 0;
+        /* inset: 10px; */
+        width: 2px;
+        /* 光标的宽度 */
+        height: 1em;
+        /* 高度与字体大小相同 */
+        background-color: rgba(179, 11, 11, 0.822);
+        /* 光标颜色 */
+        animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+
+<body>
+    <div id="container">
+        <div id="text">123123</div>
+        <div id="blinking-cursor"></div>
+    </div>
+</body>
+<script src="./index.js"></script>
+
+</html>
